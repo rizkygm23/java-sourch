@@ -68,7 +68,7 @@ public class login extends javax.swing.JFrame {
         jLabel1.setText("Masukan PIN Anda :");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setText("Masukan NIM Anda :");
+        jLabel2.setText("Masukan NIM Anda ::baa");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
