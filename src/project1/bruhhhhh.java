@@ -13,12 +13,17 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 
 import java.sql.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.table.*;
 
 public class bruhhhhh extends javax.swing.JFrame {
     public static Connection con;
     public static Statement stm;
-
+    proses prs = new proses();
+    login log = new login();
+    addItem Add = new addItem();
+    editStock edit = new editStock();
     /**
      * Creates new form bruhhhhh
      */
@@ -26,6 +31,7 @@ public class bruhhhhh extends javax.swing.JFrame {
         initComponents();
         refresh();
         
+        setExtendedState(JFrame.MAXIMIZED_BOTH); 
     }
 
     /**
@@ -38,12 +44,33 @@ public class bruhhhhh extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        refresh = new javax.swing.JButton();
+        PanelUser = new javax.swing.JPanel();
+        pmlk = new javax.swing.JLabel();
+        nameToko = new javax.swing.JLabel();
+        pmlkLabel = new javax.swing.JLabel();
+        nameToko1 = new javax.swing.JLabel();
+        srcF = new rojerusan.RSMetroTextPlaceHolder();
+        src_btn = new rojerusan.RSMaterialButtonRectangle();
+        keluar_btn = new rojerusan.RSMaterialButtonRectangle();
+        refreshBtn = new rojerusan.RSMaterialButtonRectangle();
+        edit_btn = new rojerusan.RSMaterialButtonRectangle();
+        add_btn = new rojerusan.RSMaterialButtonRectangle();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 83, 83));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setFocusCycleRoot(false);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTable1.setBackground(new java.awt.Color(204, 204, 204));
+        jTable1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -54,46 +81,215 @@ public class bruhhhhh extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        refresh.setText("Refresh");
-        refresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable1.setFocusable(false);
+        jTable1.setRowHeight(24);
+        jTable1.setShowGrid(true);
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        PanelUser.setBackground(new java.awt.Color(255, 255, 255));
+        PanelUser.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "WELCOME!", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        PanelUser.setForeground(new java.awt.Color(255, 83, 83));
+
+        pmlk.setBackground(new java.awt.Color(51, 51, 51));
+        pmlk.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        pmlk.setForeground(new java.awt.Color(0, 0, 0));
+        pmlk.setText("PEMILIK");
+
+        nameToko.setBackground(new java.awt.Color(51, 51, 51));
+        nameToko.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        nameToko.setForeground(new java.awt.Color(0, 0, 0));
+        nameToko.setText("NAMA TOKO");
+
+        pmlkLabel.setBackground(new java.awt.Color(51, 51, 51));
+        pmlkLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        pmlkLabel.setForeground(new java.awt.Color(102, 102, 102));
+        pmlkLabel.setText("OWNER          :");
+
+        nameToko1.setBackground(new java.awt.Color(51, 51, 51));
+        nameToko1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        nameToko1.setForeground(new java.awt.Color(102, 102, 102));
+        nameToko1.setText("NAME STORE      :");
+
+        javax.swing.GroupLayout PanelUserLayout = new javax.swing.GroupLayout(PanelUser);
+        PanelUser.setLayout(PanelUserLayout);
+        PanelUserLayout.setHorizontalGroup(
+            PanelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelUserLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pmlkLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nameToko1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(PanelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pmlk)
+                    .addComponent(nameToko))
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+        PanelUserLayout.setVerticalGroup(
+            PanelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelUserLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pmlkLabel)
+                    .addComponent(pmlk))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameToko)
+                    .addComponent(nameToko1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        srcF.setForeground(new java.awt.Color(255, 83, 83));
+        srcF.setBorderColor(new java.awt.Color(0, 0, 0));
+        srcF.setBotonColor(new java.awt.Color(0, 0, 0));
+
+        src_btn.setBackground(new java.awt.Color(0, 0, 0));
+        src_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
+        src_btn.setText("Search");
+        src_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                src_btnActionPerformed(evt);
+            }
+        });
+
+        keluar_btn.setBackground(new java.awt.Color(204, 0, 0));
+        keluar_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
+        keluar_btn.setText("LOG OUT");
+        keluar_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keluar_btnActionPerformed(evt);
+            }
+        });
+
+        refreshBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
+        refreshBtn.setText("Refresh");
+        refreshBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshBtnActionPerformed(evt);
+            }
+        });
+
+        edit_btn.setBackground(new java.awt.Color(255, 83, 83));
+        edit_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
+        edit_btn.setText("EDIT STOCK");
+        edit_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edit_btnActionPerformed(evt);
+            }
+        });
+
+        add_btn.setBackground(new java.awt.Color(0, 153, 102));
+        add_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
+        add_btn.setText("Add Item");
+        add_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_btnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(srcF, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PanelUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(src_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(add_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(refreshBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(515, 515, 515)
+                                .addComponent(keluar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(7, 7, 7)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(keluar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PanelUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(95, 95, 95)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(srcF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(src_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refreshBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(add_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addGap(54, 54, 54))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(refresh)
-                .addGap(37, 37, 37))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
+    private void src_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_src_btnActionPerformed
+        // TODO add your handling code here:
+        String searchQuery = srcF.getText();
+        DefaultTableModel model = prs.searchProducts(searchQuery);
+        jTable1.setModel(model);
+    }//GEN-LAST:event_src_btnActionPerformed
+
+    private void keluar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluar_btnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_keluar_btnActionPerformed
+
+    private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
         // TODO add your handling code here:
         refresh();
-    }//GEN-LAST:event_refreshActionPerformed
+    }//GEN-LAST:event_refreshBtnActionPerformed
+
+    private void edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btnActionPerformed
+        // TODO add your handling code here:
+        edit.setVisible(true);
+    }//GEN-LAST:event_edit_btnActionPerformed
+
+    private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
+        // TODO add your handling code here:
+        Add.setVisible(true);
+        
+    }//GEN-LAST:event_add_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -102,31 +298,34 @@ public class bruhhhhh extends javax.swing.JFrame {
         loadData();
     }
     public void loadData() {
-        try {
-            String url = "jdbc:mysql://localhost/belajar_sql";
-            String user = "root";
-            String pass = "23050477";
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(url, user, pass);
-            stm = con.createStatement();
-            System.out.println("koneksi berhasil;");
-        } catch (Exception e) {
-            System.err.println("koneksi gagal" + e.getMessage());
+        if (prs.getUserName() == null){
+            pmlk.setText(prs.getUserName());
+        }else{
+            pmlk.setText(prs.getUserName().toUpperCase());
         }
+        nameToko.setText(prs.getToko());
+//        wTab.setText("Selamat Datang! ");
+        prs.Trykoneksi();
         
         try {
             // Query untuk mengambil semua data dari tabel barang1
             String query = "SELECT * FROM barang1";
 
             // Eksekusi query
-            ResultSet resultSet = stm.executeQuery(query);
+            ResultSet resultSet = proses.stm.executeQuery(query);
 
             // Memproses hasil query menjadi model tabel
-            DefaultTableModel model = new DefaultTableModel();
+            DefaultTableModel model = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                    return false; // Semua kolom tidak bisa diedit
+                }
+            };
             model.addColumn("BARCODE");
             model.addColumn("NAMA");
             model.addColumn("STOCK");
             model.addColumn("HARGA");
+            
 
             while (resultSet.next()) {
                 Object[] row = {
@@ -134,6 +333,7 @@ public class bruhhhhh extends javax.swing.JFrame {
                         resultSet.getString("nama_produk"),
                         resultSet.getInt("stock"),
                         resultSet.getInt("harga_per_pcs")
+                        
                 };
                 model.addRow(row);
             }
@@ -161,41 +361,7 @@ public class bruhhhhh extends javax.swing.JFrame {
                 | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(bruhhhhh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        // Membuat instance dari kelas project1
-//        bruhhhhh myFrame = new bruhhhhh();
-//        // Memanggil metode setVisible() untuk menampilkan frame
-//        myFrame.setVisible(true);
-        
-//        try {
-//            // Query untuk mengambil semua data dari tabel products
-//            String query = "SELECT * FROM barang1";
-//
-//            // Eksekusi query
-//            ResultSet resultSet = stm.executeQuery(query);
-//
-//            // Memproses hasil query menjadi model tabel
-//            DefaultTableModel model = new DefaultTableModel();
-//            model.addColumn("BARCODE");
-//            model.addColumn("NAMA");
-//            model.addColumn("STOCK");
-//            model.addColumn("HARGA");
-//
-//            while (resultSet.next()) {
-//                Object[] row = {
-//                        resultSet.getInt("barcode"),
-//                        resultSet.getString("nama_produk"),
-//                        resultSet.getInt("stock"),
-//                        resultSet.getInt("harga_per_pcs")
-//                };
-//                model.addRow(row);
-//            }
-//
-//            // Menetapkan model tabel ke JTable
-//            myFrame.jTable1.setModel(model);
-//
-//        } catch (SQLException e) {
-//            System.err.println("Gagal menjalankan query: " + e.getMessage());
-//        }
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -208,8 +374,20 @@ public class bruhhhhh extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanelUser;
+    private rojerusan.RSMaterialButtonRectangle add_btn;
+    private rojerusan.RSMaterialButtonRectangle edit_btn;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JButton refresh;
+    private rojerusan.RSMaterialButtonRectangle keluar_btn;
+    private javax.swing.JLabel nameToko;
+    private javax.swing.JLabel nameToko1;
+    private javax.swing.JLabel pmlk;
+    private javax.swing.JLabel pmlkLabel;
+    private rojerusan.RSMaterialButtonRectangle refreshBtn;
+    private rojerusan.RSMetroTextPlaceHolder srcF;
+    private rojerusan.RSMaterialButtonRectangle src_btn;
     // End of variables declaration//GEN-END:variables
 }
